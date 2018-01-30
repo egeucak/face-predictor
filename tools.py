@@ -20,7 +20,7 @@ class Tools:
             df = df[list(cols) + ["Image"]]
 
         # print(df.count())
-        if fill == False: df = df.dropna()
+        df = df.dropna()
 
         X = np.vstack(df["Image"].values) / 255.
         X = X.astype(np.float32)

@@ -2,6 +2,7 @@ from keras.models import Sequential
 
 from keras import backend as K
 from keras.callbacks import EarlyStopping
+from keras.models import Sequential
 
 from tools import Tools
 from network import Network
@@ -14,7 +15,7 @@ def create_relu_advanced(max_value=1.):
 master_tool = Tools()
 
 
-X, y = master_tool.load()
+X, y = master_tool.load(fill=False)
 
 print("y.shape == {}; y.min == {:.3f}; y.max == {:.3f}".format(y.shape, y.min(), y.max()))
 
@@ -39,4 +40,4 @@ model.fit(X, y,
           shuffle=True,
           callbacks=[])
 
-model.save("model3.h5")
+model.save("model4.h5")
