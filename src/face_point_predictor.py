@@ -1,7 +1,7 @@
 from keras.models import Sequential
 
-from network import Network
-from tools import Tools
+from .network import Network
+from .tools import Tools
 
 master_tool = Tools()
 

@@ -1,11 +1,9 @@
-from keras.models import Sequential
-
 from keras import backend as K
 from keras.callbacks import EarlyStopping
 from keras.models import Sequential
 
-from tools import Tools
-from network import Network
+from .tools import Tools
+from .network import Network
 
 def create_relu_advanced(max_value=1.):
     def relu_advanced(x):

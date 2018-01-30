@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 class Tools:
     def __init__(self):
-        self.FTRAIN = "training.csv"
-        self.FTEST = "test.csv"
+        self.FTRAIN = "../data/training.csv"
+        self.FTEST = "../data/test.csv"
 
     def load(self, test=False, cols=None, fill=True):
         fname = self.FTEST if test else self.FTRAIN

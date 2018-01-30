@@ -13,7 +13,7 @@ class Network:
             model.add(Flatten())
             model.add(Dense(64, activation="relu"))
             model.add(Dense(30, activation="relu"))
-            if predict: model.load_weights("model-weird.h5")
+            if predict: model.load_weights("../models/model-weird.h5")
             self.model = model
 
         elif no == 1:     # model2.h5
@@ -37,7 +37,7 @@ class Network:
             model.add(Dense(64))
             model.add(LeakyReLU())
             model.add(Dense(30, activation="linear"))
-            if predict: model.load_weights("model2.h5")
+            if predict: model.load_weights("../models/model2.h5")
             self.model = model
 
         elif no == 3:
@@ -62,7 +62,7 @@ class Network:
             model.add(Dense(64, activation="relu"))
             model.add(Dropout(0.5))
             model.add(Dense(30, activation="linear"))
-            if predict: model.load_weights("model3.h5")
+            if predict: model.load_weights("../models/model3.h5")
             self.model = model
 
 
