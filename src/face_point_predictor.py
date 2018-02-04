@@ -3,30 +3,32 @@ from keras.models import Sequential
 from .network import Network
 from .tools import Tools
 
-master_tool = Tools()
+class Point_Predictor:
+    def __init__(self):
+        self.master_tool = Tools()
+        model = Sequential()
+        temp = Network(model, no=1, predict=True)
+        self.model = temp.get_model()
 
-model = Sequential()
-temp = Network(model, no=3, predict=True)
-model = temp.get_model()
+        for layer in self.model.layers:
+            layer.trainable = False
 
-for layer in model.layers:
-    layer.trainable = False
+        self.model.compile(optimizer="adagrad",
+                      loss="mean_squared_error",
+                      metrics=["accuracy"])
 
-model.compile(optimizer="adagrad",
-              loss="mean_squared_error",
-              metrics=["accuracy"])
+        self.X, _ = self.master_tool.load(test=True, fill=False)
+        print(self.X.shape)
+        self.Y = model.predict(self.X)
 
-X, _ = master_tool.load(test=True, fill=False)
-Y = model.predict(X)
+    def predict_points(self, face):
+        try:
+            X = face
+            print(X.shape)
+            Y = self.model.predict(X)
+            self.master_tool.plot_sample(X[0], Y[0])
+            self.master_tool.plot_sample(self.X[0], self.Y[0])
 
-while 1:
-    try:
-        number = input("Please enter a number...\n>>>")
-        if number == "e": exit()
-        number = int(number)
-        # master_tool.decode_locations(Y[number])
-        master_tool.plot_sample(X[number], Y[number])
-
-    except Exception as e:
-        print("An error occured...")
-        print(e)
+        except Exception as e:
+            print("An error occured...")
+            print(e)
