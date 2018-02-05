@@ -1,7 +1,4 @@
-import numpy as np
-import cv2
-from resizeimage import resizeimage
-from PIL import Image
+import time
 
 from src.face_detector import Face_Detector
 from src.face_point_predictor import Point_Predictor
@@ -9,8 +6,14 @@ from src.face_point_predictor import Point_Predictor
 detector = Face_Detector()
 point_predictor = Point_Predictor()
 
-img = detector.detect("pic.jpg")
-img2 = detector.detect("pic2.jpg")
 
-point_predictor.predict_points(img)
-point_predictor.predict_points(img2)
+def get_face(loc):
+    img = detector.detect(loc)
+    point_predictor.predict_points(img)
+
+
+start = time.time()
+get_face("pic.jpg")
+get_face("pic2.jpg")
+get_face("pic3.jpg")
+print("3 results in {} ms".format(time.time() - start))

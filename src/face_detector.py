@@ -23,4 +23,4 @@ class Face_Detector:
         # cv2.imshow("img", roi_gray)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-        return roi_gray
+        return roi_gray/255.
