@@ -1,3 +1,3 @@
 # Face Predictor
 
-A program for recognizing faces that uses various machine learning techniques.
+A program that compares two faces. Very primitive.
