@@ -24,9 +24,10 @@ class Point_Predictor:
     def predict_points(self, face):
         try:
             X = face
-            print(X.shape)
+            # print(X.shape)
             Y = self.model.predict(X)
             self.master_tool.plot_sample(X[0], Y[0])
+            return Y
             #self.master_tool.plot_sample(self.X[0], self.Y[0])
 
         except Exception as e:
